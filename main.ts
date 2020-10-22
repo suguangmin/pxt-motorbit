@@ -124,7 +124,7 @@ export enum Turns {
 }
 
 let initialized = false
-let neoStrip: neopixel.Strip;
+//let neoStrip: neopixel.Strip;
 let matBuf = pins.createBuffer(17);
 let distanceBuf = 0;
 
