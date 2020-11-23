@@ -222,84 +222,99 @@ function stopMotor(index: number) {
     setPwm((index - 1) * 2 + 1, 0, 0);
 }
 
-/**
- * Servo Execute
- * @param index Servo Channel; eg: S1
- * @param degree [0-180] degree of servo; eg: 0, 90, 180
-*/
-//% blockId=motorbit_servo block="Servo|%index|degree %degree=protractorPicker"
-//% weight=100
-//% degree.defl=90
+
+
+//% blockId=motorbit_stop block="Motor Stop|%index|"
+//% weight=84
+export function MotorStop(index: Motors): void {
+    MotorRun(index, 0);
+}
+
+//% blockId=motorbit_motor_run block="Motor|%index|speed %speed"
+//% weight=82
+//% speed.min=-255 speed.max=255
 //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-export function Servo(index: Servos, degree: number): void {
+export function MotorRun(index: Motors, speed: number): void {
     if (!initialized) {
         initPCA9685()
     }
-    // 50hz: 20,000 us
-    let v_us = (degree * 1800 / 180 + 600) // 0.6 ~ 2.4
-    let value = v_us * 4096 / 20000
-    setPwm(index + 7, 0, value)
-}
-
-/**
- * Geek Servo
- * @param index Servo Channel; eg: S1
- * @param degree [-45-225] degree of servo; eg: -45, 90, 225
-*/
-//% blockId=motorbit_gservo block="Geek Servo|%index|degree %degree=protractorPicker"
-//% weight=98
-//% blockGap=50
-//% degree.defl=90
-//% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-export function GeekServo(index: Servos, degree: number): void {
-    if (!initialized) {
-        initPCA9685()
+    speed = speed * 16; // map 255 to 4096
+    if (speed >= 4096) {
+        speed = 4095
     }
-    // 50hz: 20,000 us
-    let v_us = ((degree - 90) * 20 / 3 + 1500) // 0.6 ~ 2.4
-    let value = v_us * 4096 / 20000
-    setPwm(index + 7, 0, value)
+    if (speed <= -4096) {
+        speed = -4095
+    }
+    if (index > 4 || index <= 0)
+        return
+    let pp = (index - 1) * 2
+    let pn = (index - 1) * 2 + 1
+    if (speed >= 0) {
+        setPwm(pp, 0, speed)
+        setPwm(pn, 0, 0)
+    } else {
+        setPwm(pp, 0, 0)
+        setPwm(pn, 0, -speed)
+    }
 }
 
 /**
- * Servo Execute
- * @param index Servo Channel; eg: S1
- * @param degree1 [0-180] degree of servo; eg: 0, 90, 180
- * @param degree2 [0-180] degree of servo; eg: 0, 90, 180
- * @param speed [1-10] speed of servo; eg: 1, 10
+ * Execute single motors with delay
+ * @param index Motor Index; eg: A01A02, B01B02, A03A04, B03B04
+ * @param speed [-255-255] speed of motor; eg: 150, -150
+ * @param delay seconde delay to stop; eg: 1
 */
-//% blockId=motorbit_servospeed block="Servo|%index|degree start %degree1|end %degree2|speed %speed"
-//% weight=96
-//% degree1.min=0 degree1.max=180
-//% degree2.min=0 degree2.max=180
-//% speed.min=1 speed.max=10
+//% blockId=motorbit_motor_rundelay block="Motor|%index|speed %speed|delay %delay|s"
+//% weight=81
+//% speed.min=-255 speed.max=255
+//% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+export function MotorRunDelay(index: Motors, speed: number, delay: number): void {
+    MotorRun(index, speed);
+    basic.pause(delay * 1000);
+    MotorRun(index, 0);
+}
+
+
+
+/**
+ * Execute two motors at the same time
+ * @param motor1 First Motor; eg: A01A02, B01B02
+ * @param speed1 [-255-255] speed of motor; eg: 150, -150
+ * @param motor2 Second Motor; eg: A03A04, B03B04
+ * @param speed2 [-255-255] speed of motor; eg: 150, -150
+*/
+//% blockId=motorbit_motor_dual block="Motor|%motor1|speed %speed1|%motor2|speed %speed2"
+//% weight=80
 //% inlineInputMode=inline
+//% speed1.min=-255 speed1.max=255
+//% speed2.min=-255 speed2.max=255
 //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-export function Servospeed(index: Servos, degree1: number, degree2: number, speed: number): void {
-    if (!initialized) {
-        initPCA9685()
-    }
-    // 50hz: 20,000 us
-    if(degree1 > degree2){
-        for(let i=degree1;i>degree2;i--){
-            let v_us = (i * 1800 / 180 + 600) // 0.6 ~ 2.4
-            let value = v_us * 4096 / 20000
-            basic.pause(4 * (10 - speed));
-            setPwm(index + 7, 0, value)
-        }
-    }
-    else{
-        for(let i=degree1;i<degree2;i++){
-            let v_us = (i * 1800 / 180 + 600) // 0.6 ~ 2.4
-            let value = v_us * 4096 / 20000
-            basic.pause(4 * (10 - speed));
-            setPwm(index + 7, 0, value)
-        }
-    }
+export function MotorRunDual(motor1: Motors, speed1: number, motor2: Motors, speed2: number): void {
+    MotorRun(motor1, speed1);
+    MotorRun(motor2, speed2);
 }
 
 
-
+/**
+ * Execute two motors at the same time
+ * @param motor1 First Motor; eg: A01A02, B01B02
+ * @param speed1 [-255-255] speed of motor; eg: 150, -150
+ * @param motor2 Second Motor; eg: A03A04, B03B04
+ * @param speed2 [-255-255] speed of motor; eg: 150, -150
+*/
+//% blockId=motorbit_motor_dualDelay block="Motor|%motor1|speed %speed1|%motor2|speed %speed2|delay %delay|s "
+//% weight=79
+//% inlineInputMode=inline
+//% speed1.min=-255 speed1.max=255
+//% speed2.min=-255 speed2.max=255
+//% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
+export function MotorRunDualDelay(motor1: Motors, speed1: number, motor2: Motors, speed2: number, delay: number): void {
+    MotorRun(motor1, speed1);
+    MotorRun(motor2, speed2);
+	basic.pause(delay * 1000);
+	MotorRun(motor1, 0);
+    MotorRun(motor2, 0);
+}
 
 
 // /**
