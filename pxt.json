@@ -10,6 +10,8 @@
         "main.ts",
         "enums.d.ts",
         "ir.cpp",
+        "TransmitterIR.cpp",
+        "TransmitterIR.h",
         "_locales/zh/motorbit-strings.json"
     ],
     "testFiles": [
