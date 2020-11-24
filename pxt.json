@@ -9,8 +9,7 @@
         "README.md",
         "main.ts",
         "enums.d.ts",
-        "TransmitterIR.cpp",
-        "TransmitterIR.h",
+        "ir.cpp",
         "_locales/zh/motorbit-strings.json"
     ],
     "testFiles": [
