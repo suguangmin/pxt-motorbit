@@ -42,7 +42,7 @@ enum ColorEffect {
 }
 
 
-namespace IrRemote {
+namespace Ultrasound {
  //let neoStrip: neopixel.Strip;
 let emRGBLight: MGRGBLight.EmakefunRGBLight;
 let matBuf = pins.createBuffer(17);
