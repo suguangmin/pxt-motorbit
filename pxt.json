@@ -8,9 +8,10 @@
     "files": [
         "README.md",
         "main.ts",
-        "ir.cpp",
-        "TransmitterIR.cpp",
-        "TransmitterIR.h",
+        "enums.d.ts",
+        "Ultrasound.ts",
+        "MGRGBLight.ts",
+        "sendbuffer.asm",
         "_locales/zh/motorbit-strings.json"
     ],
     "testFiles": [

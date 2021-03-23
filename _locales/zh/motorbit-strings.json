@@ -8,10 +8,11 @@
     "motorbit.StpCarTurn|block": "步进小车 转向 |角度 %turn|轮直径(mm) %diameter|轮距(mm) %track",
     "motorbit.MotorRun|block": "电机|%index|速度 %speed",
     "motorbit.MotorRunDual|block": "电机|%motor1|速度 %speed1|%motor2|速度 %speed2",
-	"motorbit.MotorRunDualDelay|block": "电机|%motor1|速度 %speed1|%motor2|速度 %speed2|延时 %delay|s",
+    "motorbit.MotorRunDualDelay|block": "电机|%motor1|速度 %speed1|%motor2|速度 %speed2|延时 %delay|s",
     "motorbit.MotorRunDelay|block": "电机|%index|速度 %speed|延时 %delay|s",
     "motorbit.MotorStop|block": "电机 停止|%index",
     "motorbit.MotorStopAll|block": "停止所有电机",
+    "motorbit.Ultrasonic|block": "引脚%pin读取RGB超声波距离(cm)",
     "RgbColors.Red|block": "红",
     "RgbColors.Orange|block": "橙",
     "RgbColors.Yellow|block": "黄",
@@ -19,7 +20,7 @@
     "RgbColors.Blue|block": "蓝",
     "RgbColors.Indigo|block": "靛蓝",
     "RgbColors.Violet|block": "紫罗兰",
-    "RgbColors.Ourple|block": "紫",
+    "RgbColors.Purple|block": "紫",
     "RgbColors.White|block": "白",
     "RgbColors.Black|block": "黑",
     "RgbUltrasonics.Left|block": "左边",
@@ -29,7 +30,5 @@
     "ColorEffect.Breathing|block": "呼吸灯",
     "ColorEffect.Rotate|block": "旋转流星",
     "ColorEffect.Flash|block": "闪烁",
-    "IrRemote|block": "红外",
-    "IrRemote.init|block": "红外遥控器初始化引脚|%pin",
-    "IrRemote.onPressEvent|block": "当红外遥控器按键|%btn|按下"
+    "motorbit.sensorbit_rus04|block": "选择引脚%pin选择彩灯%index选择颜色%rgb选择效果%effect"
 }
