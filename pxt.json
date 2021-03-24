@@ -10,8 +10,6 @@
         "README.md",
         "main.ts",
         "enums.d.ts",
-        "MGRGBLight.ts",
-        "MT_sendbuffer.asm",
         "_locales/zh/motorbit-strings.json"
     ],
     "testFiles": [
