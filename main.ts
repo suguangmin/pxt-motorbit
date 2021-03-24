@@ -488,10 +488,10 @@ export function MotorRunDualDelay(motor1: Motors, speed1: number, motor2: Motors
     
 
      //let neoStrip: neopixel.Strip;
-let emRGBLight: MGRGBLight.EmakefunRGBLight;
-let matBuf = pins.createBuffer(17);
-let distanceBuf = 0;
-/**
+    let emRGBLight: MGRGBLight.EmakefunRGBLight;
+    let matBuf = pins.createBuffer(17);
+    let distanceBuf = 0;
+    /**
      * Get RUS04 distance
      * @param pin Microbit ultrasonic pin; eg: P2
     */
