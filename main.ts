@@ -5,48 +5,48 @@ load dependency
 "motorbit": "file:../pxt-motorbit"
 */
 
-enum RgbColors {
-    //% block=red
-    MT_Red = 0xFF0000,
-    //% block=orange
-    MT_Orange = 0xFFA500,
-    //% block=yellow
-    MT_Yellow = 0xFFFF00,
-    //% block=green
-    MT_Green = 0x00FF00,
-    //% block=blue
-    MT_Blue = 0x0000FF,
-    //% block=indigo
-    MT_Indigo = 0x4b0082,
-    //% block=violet
-    MT_Violet = 0x8a2be2,
-    //% block=purple
-    MT_Purple = 0xFF00FF,
-    //% block=white
-    MT_White = 0xFFFFFF,
-    //% block=black
-    MT_Black = 0x000000
-}
+// enum RgbColors {
+//     //% block=red
+//     MT_Red = 0xFF0000,
+//     //% block=orange
+//     MT_Orange = 0xFFA500,
+//     //% block=yellow
+//     MT_Yellow = 0xFFFF00,
+//     //% block=green
+//     MT_Green = 0x00FF00,
+//     //% block=blue
+//     MT_Blue = 0x0000FF,
+//     //% block=indigo
+//     MT_Indigo = 0x4b0082,
+//     //% block=violet
+//     MT_Violet = 0x8a2be2,
+//     //% block=purple
+//     MT_Purple = 0xFF00FF,
+//     //% block=white
+//     MT_White = 0xFFFFFF,
+//     //% block=black
+//     MT_Black = 0x000000
+// }
 
-enum RgbUltrasonics {
-    //% block=left
-    MT_Left = 0x00,
-    //% block=right
-    MT_Right = 0x01,
-    //% block=all
-    MT_All = 0x02
-}
+// enum RgbUltrasonics {
+//     //% block=left
+//     MT_Left = 0x00,
+//     //% block=right
+//     MT_Right = 0x01,
+//     //% block=all
+//     MT_All = 0x02
+// }
 
-enum ColorEffect {
-    //% block=none
-    MT_None = 0x00,
-    //% block=breathing
-    MT_Breathing = 0x01,
-    //% block=rotate
-    MT_Rotate = 0x02,
-    //% block=flash
-    MT_Flash = 0x03
-}
+// enum ColorEffect {
+//     //% block=none
+//     MT_None = 0x00,
+//     //% block=breathing
+//     MT_Breathing = 0x01,
+//     //% block=rotate
+//     MT_Rotate = 0x02,
+//     //% block=flash
+//     MT_Flash = 0x03
+// }
 
 
 //% color="#EE6A50" weight=10 icon="\uf085"
@@ -500,6 +500,13 @@ export function MotorRunDualDelay(motor1: Motors, speed1: number, motor2: Motors
 
 export function Setting_the_on_board_lights(index: RgbUltrasonics,rgb: RgbColors, effect: ColorEffect): void {
      sensors.rus04_rgb(DigitalPin.P16, 4, index, rgb, effect);
+}
+	
+//% blockId=Setting_the_on_board_RGB block="Setting the on-board RGB %index color %rgb Effect %effect"
+//% weight=76
+
+export function Setting_the_on_board_RGB(index: RgbUltrasonics,rgb: RgbColors, effect: ColorEffect): void {
+     sensors.rus04_rgb(DigitalPin.P16, 0, index, rgb, effect);
 }
 
 
