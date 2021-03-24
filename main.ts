@@ -515,7 +515,7 @@ export function Setting_the_on_board_lights(index: RgbUltrasonics,rgb: RgbColors
 //% blockId=Setting_the_on_board_RGB block="Setting the on-board RGB %offset color %rgb Effect %effect"
 //% weight=76
 
-export function Setting_the_on_board_lights(offset: Offset,rgb: RgbColors, effect: ColorEffect): void {
+export function Setting_the_on_board_RGB(offset: Offset,rgb: RgbColors, effect: ColorEffect): void {
      sensors.rus04_rgb(DigitalPin.P16, offset, 0, rgb, effect);
 }
 
