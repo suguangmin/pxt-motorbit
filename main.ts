@@ -452,5 +452,13 @@ export function MotorRunDualDelay(motor1: Motors, speed1: number, motor2: Motors
     export function Ultrasonic_reading_distance(): number {
         return sensors.Ultrasonic(DigitalPin.P2);
 }
+	
+//% blockId=Setting_the_on_board_lights block="Setting the on-board lights %index color %rgb Effect %effect"
+//% weight=77
+
+export function Setting_the_on_board_lights(index: sensors.RgbUltrasonics,rgb: sensors.RgbColors, effect: sensors.ColorEffect): number {
+     sensors.rus04_rgb(DigitalPin.P16, 4, index, rgb, effect);
+}
+
 
 }
