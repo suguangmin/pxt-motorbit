@@ -450,7 +450,7 @@ export function MotorRunDualDelay(motor1: Motors, speed1: number, motor2: Motors
 //% weight=78
 
     export function Ultrasonic_reading_distance(): number {
-        return sensors.Ultrasonic(1);
+        return sensors.Ultrasonic(DigitalPin.P2);
 }
 
 }
