@@ -30,5 +30,9 @@
     "ColorEffect.Breathing|block": "呼吸灯",
     "ColorEffect.Rotate|block": "旋转流星",
     "ColorEffect.Flash|block": "闪烁",
-    "motorbit.sensorbit_rus04|block": "选择引脚%pin选择彩灯%index选择颜色%rgb选择效果%effect"
+    "motorbit.sensorbit_rus04|block": "选择引脚%pin选择彩灯%index选择颜色%rgb选择效果%effect",
+    "Offset.ONE|block": "第一个灯",
+    "Offset.TWO|block": "第二个灯",
+    "Offset.THREE|block": "第三个灯",
+    "Offset.FOUR|block": "第四个灯"
 }
