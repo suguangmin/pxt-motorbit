@@ -47,6 +47,16 @@ load dependency
 //     //% block=flash
 //     MT_Flash = 0x03
 // }
+enum Offset {
+    //% block=one
+    ONE = 0,
+    //% block=two
+    TWO = 1,
+    //% block=three
+    THREE = 2,
+    //% block=four
+    FOUR = 3
+}
 
 
 //% color="#EE6A50" weight=10 icon="\uf085"
@@ -502,11 +512,11 @@ export function Setting_the_on_board_lights(index: RgbUltrasonics,rgb: RgbColors
      sensors.rus04_rgb(DigitalPin.P16, 4, index, rgb, effect);
 }
 	
-//% blockId=Setting_the_on_board_RGB block="Setting the on-board RGB %index color %rgb Effect %effect"
+//% blockId=Setting_the_on_board_RGB block="Setting the on-board RGB %offset color %rgb Effect %effect"
 //% weight=76
 
-export function Setting_the_on_board_RGB(index: RgbUltrasonics,rgb: RgbColors, effect: ColorEffect): void {
-     sensors.rus04_rgb(DigitalPin.P16, 0, index, rgb, effect);
+export function Setting_the_on_board_lights(offset: Offset,rgb: RgbColors, effect: ColorEffect): void {
+     sensors.rus04_rgb(DigitalPin.P16, offset, 0, rgb, effect);
 }
 
 
