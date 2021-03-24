@@ -11,7 +11,7 @@
         "enums.d.ts",
         "Ultrasound.ts",
         "MGRGBLight.ts",
-        "sendbuffer.asm",
+        "MT_sendbuffer.asm",
         "_locales/zh/motorbit-strings.json"
     ],
     "testFiles": [
