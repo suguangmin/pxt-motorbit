@@ -3,8 +3,7 @@
     "version": "1.0.0",
     "description": "motorbit emakefun",
     "dependencies": {
-        "core": "*",
-        "Sensorbit": "github:suguangmin/pxt-sensorbits1"
+        "core": "*"
     },
     "files": [
         "README.md",
